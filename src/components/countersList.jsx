@@ -18,15 +18,20 @@ const CountersList = () => {
 
     const handleReset = () => {
         setCounters(initialState)
-        console.log('handleReset')
     }
 
-    const handleIncrement = (value) => { 
-        console.log('handleIncrement', value)
+    const handleIncrement = (id) => { 
+        const newCounters = [...counters]
+        const counterIndex = newCounters.findIndex((counter)=>counter.id===id)
+        newCounters[counterIndex].value = newCounters[counterIndex].value + 1
+        setCounters(newCounters)
     }
 
-    const handleDecrement = (value) => {
-        console.log('handleDecrement', value)
+    const handleDecrement = (id) => {
+        const newCounters = [...counters]
+        const counterIndex = newCounters.findIndex((counter)=>counter.id===id)
+        newCounters[counterIndex].value = newCounters[counterIndex].value - 1
+        setCounters(newCounters) 
     }
 
     return (
